@@ -15,8 +15,6 @@ export default class App extends React.Component {
   }
 
 
-
-
   fetchNews() {
     getNews()
       .then(articles => this.setState({ articles, refreshing: false }))
