@@ -16,18 +16,12 @@ export default class App extends React.Component {
 
 
   fetchNews() {
-    getNews()
-      .then(articles => this.setState({ articles, refreshing: false }))
+    getNews().then(articles => this.setState({ articles, refreshing: false }))
       .catch(() => this.setState({ refreshing: false }));
   }
 
   handleRefresh() {
-    this.setState(
-      {
-        refreshing: true
-    },
-      () => this.fetchNews()
-    );
+    this.setState({refreshing: true}, () => this.fetchNews());
   }
 
   componentDidMount() {
@@ -37,25 +31,20 @@ export default class App extends React.Component {
   render() {
     return (
       <FlatList
-        data={this.state.articles}
-        renderItem={({ item }) => <Article article={item} />}
-        keyExtractor={item => item.url}
-        refreshing={this.state.refreshing}
-        onRefresh={this.handleRefresh.bind(this)}
+        data={this.state.articles} //array.
+        renderItem={({ item }) => <Article article={item} />} //Takes an item from data and renders it into the list.
+
+
+        keyExtractor={item => item.url} //like the key in map but not. 'The default extractor checks item.key, then falls back to using the index, like React does.'
+        refreshing={this.state.refreshing} // 'Set this true while waiting for new data from a refresh.'
+        onRefresh={this.handleRefresh.bind(this)} //If provided, a standard RefreshControl will be added for "Pull to Refresh" functionality. Make sure to also set the refreshing prop correctly.
       />
   );
   }
 }
 
-
-
-// const instructions = Platform.select({
-//   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-//   android:
-//     'Double tap R on your keyboard to reload,\n' +
-//     'Shake or press menu button for dev menu',
-// });
-
+//
+//
 // type Props = {};
 // export default class App extends Component<Props> {
 //   render() {

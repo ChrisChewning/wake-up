@@ -5,18 +5,13 @@ import moment from 'moment';
 
 export default class Article extends React.Component {
   render() {
-    const {
-      title,
-      description,
-      publishedAt,
-      source,
-      urlToImage,
-      url
-    } = this.props.article;
+    const { title, description, publishedAt, source, urlToImage, url }
+      = this.props.article;
+
     const { noteStyle, featuredTitleStyle } = styles;
     const time = moment(publishedAt || moment.now()).fromNow();
     const defaultImg =
-      'https://wallpaper.wiki/wp-content/uploads/2017/04/wallpaper.wiki-Images-HD-Diamond-Pattern-PIC-WPB009691.jpg';
+      'https://wallpaper.wiki/wp-content/uploads/2018/10/World-views-seen-when-hiking-3.jpg';
 
     return (
       <TouchableHighlight
@@ -35,7 +30,7 @@ export default class Article extends React.Component {
           </Text>
           <Divider style={{ backgroundColor: '#dfe6e9' }} />
           <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+            style={{ flexDirection: 'row', justifyContent: 'space-between'}}
           >
             <Text style={noteStyle}>{source.name.toUpperCase()}</Text>
             <Text style={noteStyle}>{time}</Text>
